@@ -1,0 +1,93 @@
+@import "mixins/overlay";
+
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+  --c-white: #ffffff;
+  --c-white-soft: #FBFBFB;
+  
+  --c-grey: #707070;
+  
+  --c-black: #000000;
+  --c-black-soft: #061534;
+  
+  --c-pink: #F54768;
+  --c-red: #D91B1B;
+  --c-blue: #3525CB;
+  --c-green: #22A222;
+  --c-cyan: #16A6CA;
+  
+  /* these will be overriden in the theme.config.js */
+  --c-primary: #283B6D;
+  --c-secondary: #D50052;
+  --c-primary-alt: #544CBE;
+  --c-secondary-alt: #612157;
+}
+
+/* semantic color variables for this project */
+:root {
+  --color-background: var(--c-white);
+  --color-background-soft: var(--c-white-soft);
+  --color-border: var(--c-grey);
+  --color-heading: var(--c-black-soft);
+  --color-heading-alt: var(--c-primary);
+  --color-text: var(--c-black);
+  --color-text-soft: var(--c-black-soft);
+  --color-highlight: var(--c-secondary);
+
+  --color-primary: var(--c-primary);
+  --color-secondary: var(--c-secondary);
+  --color-primary-alt: var(--c-primary-alt);
+  --color-secondary-alt: var(--c-secondary-alt);
+  --color-gradient-text: var(--c-white);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background-soft);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-size: 1.6rem;
+  
+  @include overlay;
+}
+
+*:focus-visible{
+  outline: none;
+}
+
+strong {
+  font-weight: 600;
+}
+
+// .scroll-padding{
+//   padding-right: 0.5rem;
+// }
+::-webkit-scrollbar {
+  width: 0.6rem;
+  height: 0.6rem;
+}
+ 
+::-webkit-scrollbar-track {
+  background-color: var(--color-background-soft);
+  border-radius: .5rem;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: var(--c-primary);
+  border-radius: .5rem;
+}

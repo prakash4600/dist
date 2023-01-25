@@ -1,0 +1,17 @@
+@mixin padding-vertical {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+@mixin padding-horizontal {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+@mixin padding {
+  padding: 2.5rem;
+}
+
+@mixin padding-component {
+  padding: 2rem;
+}

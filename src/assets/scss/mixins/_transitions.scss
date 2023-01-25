@@ -1,0 +1,6 @@
+@mixin transition {
+  transition: all 100ms ease-in-out;
+}
+@mixin transition-slow {
+  transition: all 300ms ease-out;
+}

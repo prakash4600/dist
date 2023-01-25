@@ -1,0 +1,9 @@
+@mixin gradient-vertical-main {
+  background: var(--color-primary);
+  background: linear-gradient(0deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+}
+
+@mixin gradient-horizontal-main {
+  background: var(--color-secondary);
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}

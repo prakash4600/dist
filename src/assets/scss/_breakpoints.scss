@@ -1,0 +1,44 @@
+@use "sass:map";
+
+// breakpoints setup
+$super-wide: ('name': super-wide, 'min': 1900px, 'max': 999999999px, 'gutter': 25px, 'margin': 32px, 'cols': 12) !default;
+$wide: ('name': wide, 'min': 1600px, 'max': 1899px, 'gutter': 25px, 'margin': 32px, 'cols': 12) !default;
+$desktop: ('name': desktop, 'min': 1440px, 'max': 1599px, 'gutter': 25px, 'margin': 28px, 'cols': 12) !default;
+$desktop-small: ('name': desktop-small, 'min': 1200px, 'max': 1439px, 'gutter': 25px, 'margin': 24px, 'cols': 12) !default;
+$tablet: ('name': tablet, 'min': 1024px, 'max': 1199px, 'gutter': 20px, 'margin': 20px, 'cols': 12) !default;
+$tablet-small: ('name': tablet-small, 'min': 768px, 'max': 1023px, 'gutter': 15px, 'margin': 20px, 'cols': 12) !default;
+$mobile: ('name': mobile, 'min': 480px, 'max': 767px, 'gutter': 15px, 'margin': 20px, 'cols': 8) !default;
+$mobile-small: ('name': mobile-small, 'min': 320px, 'max': 479px, 'gutter': 15px, 'margin': 15px, 'cols': 4) !default;
+
+
+$list: (
+  $wide,
+  $desktop,
+  $desktop-small,
+  $tablet,
+  $tablet-small,
+  $mobile,
+  $mobile-small
+);
+
+/// returns a breakpoint by name
+/// @parameter $name name of breakpoint as defined in breakpoints maps
+@function get-breakpoint-by-name($name) {
+  @each $bp in $list {
+    @if (map.get($bp, 'name') == $name) {
+      @return $bp;
+    }
+  }
+  @error '\'#{$name}\' is not a valid breakpoint name. Valid breakpoints are: wide, desktop, desktop-small, tablet, tablet-small, mobile and mobile-small.';
+}
+
+/// prints media query
+/// @parameter $name name of breakpoint
+/// @parameter $key min or max
+@mixin breakpoint($name, $key: max) {
+  $bp: get-breakpoint-by-name($name);
+
+  @media (#{$key}-width: map.get($bp, $key)) {
+    @content;
+  }
+}

@@ -1,0 +1,80 @@
+@import "borders";
+@import "gradients";
+@import "transitions";
+
+@mixin button($icon: '') {
+  @include border-rounded;
+  @include gradient-horizontal-main;
+  font-size: 1.8rem;
+  font-weight: 500;
+  padding: .5rem 2rem;
+  min-height: 4.2rem;
+  border: 0;
+  color: var(--color-background);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  background-position: 0 0;
+  z-index: 1;
+  overflow: hidden;
+
+  @if $icon != '' {
+    &::before {
+      content: '';
+      background-repeat: no-repeat;
+      background-image: url(/icons/#{$icon}.svg);
+      background-position: 50%;
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+  }
+
+  &::after {
+    @include transition;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--color-primary);
+    width: 0;
+    z-index: -1;
+  }
+
+  &:hover {
+    &:after {
+      width: 100%;
+    }
+  }
+}
+
+@mixin button-link {
+  @include transition;
+  border-radius: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  
+  &:before,
+  &:after {
+    @include transition;
+  }
+}
+
+@mixin button-drop {
+  &:before {
+    content: "";
+    display: flex;
+    width: 14px;
+    height: 10px;
+    background-image: url(/icons/chevron-purple.svg);
+    background-size: cover;
+    margin-right: 1rem;
+    @include transition;
+  }
+}

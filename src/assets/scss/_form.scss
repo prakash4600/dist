@@ -1,0 +1,32 @@
+form {
+  .field {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1 1 0;
+    max-width: 30rem;
+
+    label,
+    select {
+      font-size: 1.4rem;
+    }
+
+    label {
+      white-space: nowrap;
+    }
+
+    select {
+      border: 1px solid var(--color-border);
+      border-radius: 5rem;
+      min-width: 14rem;
+      height: 3.5rem;
+      padding: 0 3rem 0 1rem;
+      flex: 1;
+      appearance: none;
+      background-image: url(/icons/chevron-select.svg);
+      background-size: 1.4rem 1rem;
+      background-repeat: no-repeat;
+      background-position: calc(100% - 1rem) 50%;
+    }
+  }
+}
